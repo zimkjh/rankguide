@@ -27,6 +27,10 @@ p {
     padding: 25px 20px 20px;
 }
 
+.detail-entry p {
+    padding-bottom: 25px;
+}
+
 .detail-1 {
     background-color: #FFFAF4;
     text-align: center;
