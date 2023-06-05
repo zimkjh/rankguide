@@ -81,7 +81,7 @@ p {
 
 .detail-1-table td > div > div {
 
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .detail-1-table img {
@@ -112,10 +112,63 @@ p {
     justify-content: center;
     color: white;
     font-weight: 700;
-    padding: 5px 0px;
+    padding: 5px 0;
 }
 
+.ub_table-of-contents {
+    margin: 20px 20px 40px 20px;
+}
 
+.ub_table-of-contents ul {
+    list-style: none;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.ub_table-of-contents-header-container {
+    padding: 20px 0 0 20px;
+}
+
+.detail-2 {
+    padding: 20px;
+}
+
+.detail-2 h2 {
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.detail-2 h3 .list-number {
+    background: #E08E6D;
+    border-radius: 90px;
+    color: #ffffff;
+    display: inline-block;
+    line-height: 32px;
+    margin-right: 5px;
+    text-align: center;
+    width: 32px;
+}
+
+.detail-2 h3 {
+    margin-bottom: 15px
+}
+
+.detail-2 p {
+    margin-bottom: 20px;
+}
+
+.detail-2 ul {
+    list-style: none;
+    font-size: 15px;
+    margin-left: 0;
+}
+
+.detail-2 li {
+    background: url('https://jo5ham.com/wp-content/uploads/2023/05/rightarrow25.png') no-repeat 0 0;
+    margin: 0;
+    padding: 0 0 0 24px;
+}
 
 
 
