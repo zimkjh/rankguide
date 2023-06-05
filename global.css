@@ -58,9 +58,65 @@ p {
 
 .detail-1-table {
     background-color: #FFFAF4;
-    margin: 20px;
-
+    padding: 20px;
 }
 
 .detail-1-table td {
+    text-align: center;
+    background-color: white;
+    border-style: solid;
+    border-color: #AFD3E2;
 }
+
+.detail-1-table td > div > p:nth-child(1) {
+    font-weight: 600;
+    color: #4F4557;
+    font-size: 17px;
+}
+
+.detail-1-table td > div > p:nth-child(2) {
+    color: #19A7CE;
+    font-size: 19px;
+}
+
+.detail-1-table td > div > div {
+
+    margin-top: 10px;
+}
+
+.detail-1-table img {
+    width: 40vw;
+    height: 40vw;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.detail-1-table ul {
+    padding: 0;
+    list-style-image: url('https://jo5ham.com/wp-content/uploads/2023/05/checkmark15.png');
+    list-style-position: outside;
+    text-align: start;
+    margin: 0 0 0 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 13px;
+}
+
+.detail-1-cta {
+    display: flex;
+    background-color: #D25380;
+    margin: 15px 50px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    padding: 5px 0px;
+}
+
+
+
+
+
+
