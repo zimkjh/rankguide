@@ -55,3 +55,12 @@ p {
     padding-right: 50px;
     line-height: 1.5;
 }
+
+.detail-1-table {
+    background-color: #FFFAF4;
+    margin: 20px;
+
+}
+
+.detail-1-table td {
+}
