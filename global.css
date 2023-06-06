@@ -1,10 +1,46 @@
-
 .single-post .featured-image {
     display: none;
 }
 
 .single-post .entry-content {
-    margin-top: 0px;
+    margin-top: 0;
+}
+
+.detail-header {
+    background-color: #E08E6D;
+    padding: 20px;
+    color: white;
+}
+
+.detail-header {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.detail-header p {
+    font-size: 11px;
+}
+
+.detail-header h1 {
+    color: white;
+    font-size: 31px;
+    margin: 0 0 10px 0;
+}
+
+.detail-header .gb-container {
+    margin: 10px 0 10px 0;
+    height: 210px;
+}
+
+.detail-header img {
+    object-fit: cover;
+    height: 210px;
+    border-radius: 10px;
+}
+
+.detail-entry {
+    margin: 20px 20px 30px 20px;
 }
 
 h2 {
@@ -21,7 +57,7 @@ h2 {
 .detail-1 h2 {
     display: inline-flex;
     padding: 10px 15px;
-    margin-top: 10px;
+    margin-top: 20px;
     background-color: #D25380;
     border-radius: 10px;
     color: white;
