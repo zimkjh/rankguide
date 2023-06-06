@@ -1,12 +1,5 @@
-.featured-column {
-    width: 100%;
-}
 
 .single-post .featured-image {
-    display: none;
-}
-
-.single-post .entry-header {
     display: none;
 }
 
@@ -14,21 +7,9 @@
     margin-top: 0px;
 }
 
-.gb-container {
-    padding: 0px;
-}
-
-p {
-    padding: 0px;
-    margin: 0px;
-}
-
-.detail-entry {
-    padding: 25px 20px 20px;
-}
-
-.detail-entry p {
-    padding-bottom: 25px;
+h2 {
+    font-size: 30px;
+    font-weight: 700;
 }
 
 .detail-1 {
@@ -39,7 +20,6 @@ p {
 
 .detail-1 h2 {
     display: inline-flex;
-    font-size: 30px;
     padding: 10px 15px;
     margin-top: 10px;
     background-color: #D25380;
@@ -50,10 +30,9 @@ p {
 .detail-1 p {
     font-size: 13px;
     font-style: italic;
-    padding-top: 30px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding: 30px 50px 0 50px;
     line-height: 1.5;
+    margin-bottom: 0;
 }
 
 .detail-1-table {
@@ -72,15 +51,16 @@ p {
     font-weight: 600;
     color: #4F4557;
     font-size: 17px;
+    margin: 0;
 }
 
 .detail-1-table td > div > p:nth-child(2) {
     color: #19A7CE;
     font-size: 19px;
+    margin: 0;
 }
 
 .detail-1-table td > div > div {
-
     margin-top: 20px;
 }
 
@@ -134,11 +114,6 @@ p {
     padding: 20px;
 }
 
-.detail-2 h2 {
-    font-weight: 600;
-    font-size: 30px;
-}
-
 .detail-2 h3 .list-number {
     background: #E08E6D;
     border-radius: 90px;
@@ -160,16 +135,101 @@ p {
 
 .detail-2 ul {
     list-style: none;
-    font-size: 15px;
+    font-size: 18px;
     margin-left: 0;
 }
 
 .detail-2 li {
-    background: url('https://jo5ham.com/wp-content/uploads/2023/05/rightarrow25.png') no-repeat 0 0;
+    background: url('https://jo5ham.com/wp-content/uploads/2023/05/rightarrow25-2.png') no-repeat 0 1px;
     margin: 0;
     padding: 0 0 0 24px;
 }
 
+.detail-3 {
+    margin: 0 20px 15px 20px;
+}
 
+h3.detail-3 {
+    font-size: 24px;
+}
 
+.detail-3-cta {
+    margin: 20px;
+    box-shadow: 0 0 6px #bbbbbb;
+    border-radius: 9px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
 
+.detail-3-cta h4 {
+    text-align: center;
+    font-weight: 400;
+}
+
+.detail-3-cta .wp-block-image {
+    width: 70vw;
+    height: 70vw;
+}
+
+.detail-3-cta .detail-3-cta-button {
+    background-color: #D25380;
+    padding: 5px 0 5px 0;
+    text-align: center;
+    border-radius: 10px;
+    margin: 10px 20px;
+}
+
+.detail-3-cta-button a {
+    color: white;
+    font-weight: 600;
+}
+
+.detail-3 li {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+h4.detail-3-pros, h4.detail-3-cons {
+    margin: 0 0 0 20px;
+
+}
+
+ul.detail-3-pros, ul.detail-3-cons {
+    list-style: none;
+    margin: 20px;
+}
+
+.detail-3-pros li {
+    background: url('https://jo5ham.com/wp-content/uploads/2023/05/plus20.webp') no-repeat 5px 6px;
+    background-size: 15px 15px;
+    margin: 0;
+    padding: 0 0 3px 30px;
+}
+
+.detail-3-cons li {
+    background: url('https://jo5ham.com/wp-content/uploads/2023/05/minus20.webp') no-repeat 5px 6px;
+    background-size: 15px 15px;
+    margin: 0;
+    padding: 0 0 3px 30px;
+}
+
+.detail-3-table {
+    margin: 20px;
+}
+
+.detail-3-table table {
+    border: 0 solid;
+}
+
+.detail-3-table td {
+    padding: 8px;
+    text-align: left;
+    border: 0 solid #FFFFFF;
+    border-bottom: 2px solid #DDDDDD;
+    border-top: 2px solid #DDDDDD;
+}
+
+.entry-meta {
+    display: none;
+}
