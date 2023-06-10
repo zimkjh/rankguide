@@ -100,6 +100,7 @@ h2 {
     border-color: #AFD3E2;
     border-width: 1px;
     padding: 9px;
+    max-width: 500px;
 }
 
 .detail-1-item-title {
@@ -121,6 +122,8 @@ h2 {
     height: 40vw;
     object-fit: cover;
     border-radius: 10px;
+    max-width: 250px;
+    max-height: 250px;
 }
 
 .detail-1-item li {
@@ -207,9 +210,21 @@ h3.detail-3 {
     font-weight: 400;
 }
 
-.detail-3-cta .wp-block-image {
+.detail-3-cta figure.wp-block-image.size-full {
     width: 70vw;
     height: 70vw;
+    max-width: 400px;
+    max-height: 400px;
+    justify-content: center;
+    display: flex;
+}
+
+.detail-3-cta .wp-block-group__inner-container {
+    padding-top: 10px;
+}
+
+h4.wp-block-heading {
+    margin-bottom: 10px;
 }
 
 .detail-3-cta .detail-3-cta-button {
