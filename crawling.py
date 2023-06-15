@@ -3,38 +3,30 @@ import random
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-proguide_url = "https://proguide.co.kr/best-blender/"
-eggrank_url = "https://eggrank.com/picks/best-blender/"
-keyword = "믹서기"
-keyword_en = "best-blender"
+proguide_url = "https://proguide.co.kr/best-backpack/"
+eggrank_url = ""
+keyword = "백팩"
+keyword_en = "best-backpack"
 itemList = [
-    ["필립스 파워 블렌더 5000 시리즈",
-     "https://link.coupang.com/a/09bDZ",
-     "best_blender_1"],
-    ["테팔 파워믹스 미니유리믹서기",
-     "https://link.coupang.com/a/09bM1",
-     "best_blender_2"],
-    ["키첸..",
-     "",
-     ""],
-    ["보아르 에이블 초고속 진공 블렌더 대용량 믹서기",
-     "https://link.coupang.com/a/09b3K",
-     "best_blender_4"],
-    ["블랙앤데커 진공믹서기",
-     "https://link.coupang.com/a/09cda",
-     "best_blender_5"],
-    ["쿠쿠 몬스터 블렌더",
-     "https://link.coupang.com/a/09cks",
-     "best_blender_6"],
-    ["뉴트리닌자 AUTO IQ 블렌더",
-     "https://link.coupang.com/a/09cov",
-     "best_blender_7"],
+    ["쌤소나이트 BRUNSWICK 백팩",
+     "https://link.coupang.com/a/1aKXi"],
+    ["쌤소나이트 VARSITY 백팩 N1",
+     "https://link.coupang.com/a/1aLi1"],
+    ["타거스 엘리먼트 노트북 백팩 TSB227AP",
+     "https://link.coupang.com/a/1aLs7"],
+    ["타거스 노트북 백팩 TSB859AP",
+     "https://link.coupang.com/a/1aLCS"],
+    ["내셔널지오그래픽 버디백팩 N231ABG580",
+     "https://link.coupang.com/a/1aLTq"],
+    ["내셔널지오그래픽 비지니스 대용량 다용도 백팩",
+     "https://link.coupang.com/a/1aL19"],
+    ["애드에딧 어맨더 백팩 + 키링",
+     "https://link.coupang.com/a/1aL9L"],
 ]
-detail_2_contents_order = [1, 3]
+detail_2_contents_order = [1, 0, 2]
 egg_entry_contents_count = 3
-# none: 2
-itemOrdering = [1, 0, 5, 4, 3, 6]
-
+# none:
+itemOrdering = [4, 1, 3, 2, 6, 5, 0]
 
 driver = webdriver.Chrome()
 driver.get(proguide_url)
@@ -58,10 +50,14 @@ detail_3_cons = [x.find_element(By.TAG_NAME, 'li').text for x in driver.find_ele
 detail_3_table = [x.find_element(By.TAG_NAME, 'table').get_attribute('outerHTML') for x in
                   driver.find_elements(By.CLASS_NAME, "product-spec-table")]
 
-driver.get(eggrank_url)
-egg_entry_contents = "\n".join([x.get_attribute('outerHTML') for x in
-                                driver.find_element(By.CLASS_NAME, "entry-content").find_elements(By.TAG_NAME, 'p')[
-                                :egg_entry_contents_count]])
+try:
+    driver.get(eggrank_url)
+    egg_entry_contents = "\n".join([x.get_attribute('outerHTML') for x in
+                                    driver.find_element(By.CLASS_NAME, "entry-content").find_elements(By.TAG_NAME, 'p')[
+                                    :egg_entry_contents_count]])
+except:
+    egg_entry_contents = "HEY"
+
 detail_0_ul_hey = ""
 for i in itemOrdering:
     detail_0_ul_hey += "<li><a href=\"" + itemList[i][1] + "\"><strong>" + itemList[i][0] + "</strong></a></li>\n"
@@ -92,11 +88,15 @@ detail_1_raw = """
     </div>"""
 detail_1_hey = ""
 for i in itemOrdering:
+    lastFeature = ""
+    if len(detail_1_item_feature_list[i]) > 2:
+        lastFeature = detail_1_item_feature_list[i][2]
+
     detail_1_hey += detail_1_raw.replace("DETAIL_1_AWARD", detail_1_item_award[i]) \
-        .replace("DETAIL_1_FEATURE_1", detail_1_item_feature_list[i][0]).replace(
-        "DETAIL_1_FEATURE_2", detail_1_item_feature_list[i][2]) \
+        .replace("DETAIL_1_FEATURE_1", detail_1_item_feature_list[i][0]) \
+        .replace("DETAIL_1_FEATURE_2", lastFeature) \
         .replace("DETAIL_1_FEATURE_3", detail_1_item_feature_list[i][1]).replace("DETAIL_1_ITEM_NAME", itemList[i][0]) \
-        .replace("DETAIL_1_IMG_NAME", itemList[i][2]).replace("DETAIL_1_URL", itemList[i][1])
+        .replace("DETAIL_1_IMG_NAME", keyword_en + "_" + str(i)).replace("DETAIL_1_URL", itemList[i][1])
     detail_1_hey += "\n"
 
 detail_2_h3_raw = """<h3 class="wp-block-heading"><span class="list-number">INDEX_HEY.</span> SUBTITLE_HEY</h3>\n"""
@@ -154,14 +154,18 @@ for i in itemOrdering:
     random.shuffle(detail_3_intro_shuffled)
     index_hey += 1
 
+    lastFeature = ""
+    if len(detail_1_item_feature_list[i]) > 2:
+        lastFeature = detail_1_item_feature_list[i][2]
+
     detail_3_hey += detail_3_raw.replace("DETAIL_3_URL", itemList[i][1]) \
         .replace("DETAIL_3_ITEM_AWARD", detail_1_item_award[i]) \
-        .replace("DETAIL_3_IMG_NAME", itemList[i][2]) \
+        .replace("DETAIL_3_IMG_NAME", keyword_en + "_" + str(i)) \
         .replace("DETAIL_3_ITEM_TITLE", itemList[i][0]) \
         .replace("INDEX", str(index_hey)) \
         .replace("DETAIL_3_INTRO", "\n".join(detail_3_intro_shuffled)) \
         .replace("DETAIL_3_FEATURE_1", detail_1_item_feature_list[i][0]) \
-        .replace("DETAIL_3_FEATURE_2", detail_1_item_feature_list[i][2]) \
+        .replace("DETAIL_3_FEATURE_2", lastFeature) \
         .replace("DETAIL_3_FEATURE_3", detail_1_item_feature_list[i][1]) \
         .replace("DETAIL_3_CON", detail_3_cons[i]) \
         .replace("DETAIL_3_TABLE", detail_3_table[i])
