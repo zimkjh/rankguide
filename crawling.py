@@ -3,30 +3,30 @@ import random
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-proguide_url = "https://proguide.co.kr/best-backpack/"
-eggrank_url = ""
-keyword = "백팩"
-keyword_en = "best-backpack"
+month = "6"
+day = "19"
+proguide_url = "https://proguide.co.kr/best-gaming-monitor/"
+keyword = "게이밍 모니터"
+keyword_en = "best-gaming-monitor"
 itemList = [
-    ["쌤소나이트 BRUNSWICK 백팩",
-     "https://link.coupang.com/a/1aKXi"],
-    ["쌤소나이트 VARSITY 백팩 N1",
-     "https://link.coupang.com/a/1aLi1"],
-    ["타거스 엘리먼트 노트북 백팩 TSB227AP",
-     "https://link.coupang.com/a/1aLs7"],
-    ["타거스 노트북 백팩 TSB859AP",
-     "https://link.coupang.com/a/1aLCS"],
-    ["내셔널지오그래픽 버디백팩 N231ABG580",
-     "https://link.coupang.com/a/1aLTq"],
-    ["내셔널지오그래픽 비지니스 대용량 다용도 백팩",
-     "https://link.coupang.com/a/1aL19"],
-    ["애드에딧 어맨더 백팩 + 키링",
-     "https://link.coupang.com/a/1aL9L"],
+    ["LG전자 68.5cm FHD 게이밍 모니터",
+     "https://link.coupang.com/a/1v1eQ"],
+    ["알파스캔 AOC C27G2 게이밍 144 프리싱크 무결점",
+     "https://link.coupang.com/a/1v1n5"],
+    ["한성컴퓨터 TFG24F07V 리얼 75 커브드 게이밍 모니터",
+     "https://link.coupang.com/a/1v1uu"],
+    ["어드밴스원 24인치 FHD 보더리스 리얼 75HZ 모니터",
+     "https://link.coupang.com/a/1v1BL"],
+    ["어드밴스원 M32Q75P 보더리스 커브드 QHD 75 게이밍",
+     "https://link.coupang.com/a/1v1Kw"],
+    ["벤큐 조위 61cm FHD BenQ 게이밍 모니터",
+     "https://link.coupang.com/a/1v1PT"],
+    ["BenQ 모비우스 EX2710 게이밍 무결점",
+     "https://link.coupang.com/a/1v1ZZ"],
 ]
-detail_2_contents_order = [1, 0, 2]
-egg_entry_contents_count = 3
+detail_2_contents_order = []
 # none:
-itemOrdering = [4, 1, 3, 2, 6, 5, 0]
+itemOrdering = [6, 0, 4, 1, 2, 5, 3]
 
 driver = webdriver.Chrome()
 driver.get(proguide_url)
@@ -39,8 +39,8 @@ detail_1_item_feature_list = [[y.get_attribute('outerHTML') for y in x.find_elem
                               driver.find_elements(By.CLASS_NAME, "ptp-table-features-list")]
 
 detail_2_subtitle = [x.text for x in driver.find_elements(By.CLASS_NAME, "heading-list")]
-detail_2_contents = [x.get_attribute('outerHTML') for x in driver.find_elements(By.CLASS_NAME, "arrow-pink")]
-print("detail_2_contents length : " + str(len(detail_2_contents)))
+detail_2_contents = [[y.get_attribute('outerHTML') for y in x.find_elements(By.TAG_NAME, "li")] for x in
+                     driver.find_elements(By.CLASS_NAME, "arrow-pink")]
 
 detail_3_title = driver.find_element(By.ID, "q2").text
 detail_3_intro = [
@@ -49,14 +49,6 @@ detail_3_intro = [
 detail_3_cons = [x.find_element(By.TAG_NAME, 'li').text for x in driver.find_elements(By.CLASS_NAME, "con-box")]
 detail_3_table = [x.find_element(By.TAG_NAME, 'table').get_attribute('outerHTML') for x in
                   driver.find_elements(By.CLASS_NAME, "product-spec-table")]
-
-try:
-    driver.get(eggrank_url)
-    egg_entry_contents = "\n".join([x.get_attribute('outerHTML') for x in
-                                    driver.find_element(By.CLASS_NAME, "entry-content").find_elements(By.TAG_NAME, 'p')[
-                                    :egg_entry_contents_count]])
-except:
-    egg_entry_contents = "HEY"
 
 detail_0_ul_hey = ""
 for i in itemOrdering:
@@ -105,7 +97,10 @@ detail_2_content_idx = 0
 for i in range(len(detail_2_subtitle)):
     detail_2_hey += detail_2_h3_raw.replace("INDEX_HEY", str(i + 1)).replace("SUBTITLE_HEY", detail_2_subtitle[i][3:])
     if i in detail_2_contents_order:
-        detail_2_hey += detail_2_contents[detail_2_content_idx]
+        now_detail_2_contents = detail_2_contents[detail_2_content_idx]
+        random.shuffle(now_detail_2_contents)
+        detail_2_hey += '<ul class="arrow-pink styled-list styled-ul-list">' + "\n".join(
+            now_detail_2_contents) + "</ul>"
         detail_2_content_idx += 1
     else:
         detail_2_hey += "<p>HEY</p>\n"
@@ -172,12 +167,14 @@ for i in itemOrdering:
 
 f = open("rank-guide-detail-raw.html", "r")
 lines = f.readlines()
-replaced_lines = [x.replace("TITLE_HEY", title).replace("KEYWORD_HEY", keyword).replace("INTRO_HEY", egg_entry_contents)
+replaced_lines = [x.replace("TITLE_HEY", title).replace("KEYWORD_HEY", keyword)
                       .replace("DETAIL_0_UL_HEY", detail_0_ul_hey)
                       .replace("KEYWORD_EN_HEY", keyword_en)
                       .replace("DETAIL_1_HEY", detail_1_hey)
                       .replace("DETAIL_2_HEY", detail_2_hey)
                       .replace("DETAIL_3_HEY", detail_3_hey)
+                      .replace("MONTH_HEY", month)
+                      .replace("DAY_HEY", day)
                   for x in lines]
 
 f.close()
