@@ -4,29 +4,29 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 month = "6"
-day = "19"
-proguide_url = "https://proguide.co.kr/best-gaming-monitor/"
-keyword = "게이밍 모니터"
-keyword_en = "best-gaming-monitor"
+day = "25"
+proguide_url = "https://proguide.co.kr/best-4k-monitor/"
+keyword = "4K 모니터"
+keyword_en = "best-4k-monitor"
+detail_2_contents_order = [0, 1]
 itemList = [
-    ["LG전자 68.5cm FHD 게이밍 모니터",
-     "https://link.coupang.com/a/1v1eQ"],
-    ["알파스캔 AOC C27G2 게이밍 144 프리싱크 무결점",
-     "https://link.coupang.com/a/1v1n5"],
-    ["한성컴퓨터 TFG24F07V 리얼 75 커브드 게이밍 모니터",
-     "https://link.coupang.com/a/1v1uu"],
-    ["어드밴스원 24인치 FHD 보더리스 리얼 75HZ 모니터",
-     "https://link.coupang.com/a/1v1BL"],
-    ["어드밴스원 M32Q75P 보더리스 커브드 QHD 75 게이밍",
-     "https://link.coupang.com/a/1v1Kw"],
-    ["벤큐 조위 61cm FHD BenQ 게이밍 모니터",
-     "https://link.coupang.com/a/1v1PT"],
-    ["BenQ 모비우스 EX2710 게이밍 무결점",
-     "https://link.coupang.com/a/1v1ZZ"],
+    ["LG전자 80cm UHD 4K 모니터",
+     "https://link.coupang.com/a/16PZT"],
+    ["LG전자 80cm 4K 모니터 32UN650",
+     "https://link.coupang.com/a/16PWI"],
+    ["삼성전자 SMART M7 UHD 모니터",
+     "https://link.coupang.com/a/16VcC"],
+    ["삼성전자 27인치 QHD 오디세이 G5 게이밍 모니터",
+     "https://link.coupang.com/a/16VnI"],
+    ["필립스 80cm 4K UHD 시력보호 모니터",
+     ""],
+    ["ACER 프레데터 68.58cm 4K 모니터",
+     "https://link.coupang.com/a/16VO0"],
+    ["필립스 108cm 4K 시력보호 모니터",
+     "https://link.coupang.com/a/16VX6"],
 ]
-detail_2_contents_order = []
-# none:
-itemOrdering = [6, 0, 4, 1, 2, 5, 3]
+# none: 4
+itemOrdering = [3, 2, 0, 1, 6,  5]
 
 driver = webdriver.Chrome()
 driver.get(proguide_url)
