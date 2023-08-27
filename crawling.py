@@ -3,30 +3,30 @@ import random
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-month = "6"
-day = "25"
-proguide_url = "https://proguide.co.kr/best-4k-monitor/"
-keyword = "4K 모니터"
-keyword_en = "best-4k-monitor"
-detail_2_contents_order = [0, 1]
+month = "07"
+day = "2"
+proguide_url = "https://proguide.co.kr/best-starbucks-tumbler/"
+keyword = "텀블러"
+keyword_en = "best-tumbler"
+detail_2_contents_order = [0,1,2,3]
 itemList = [
-    ["LG전자 80cm UHD 4K 모니터",
-     "https://link.coupang.com/a/16PZT"],
-    ["LG전자 80cm 4K 모니터 32UN650",
-     "https://link.coupang.com/a/16PWI"],
-    ["삼성전자 SMART M7 UHD 모니터",
-     "https://link.coupang.com/a/16VcC"],
-    ["삼성전자 27인치 QHD 오디세이 G5 게이밍 모니터",
-     "https://link.coupang.com/a/16VnI"],
-    ["필립스 80cm 4K UHD 시력보호 모니터",
+    ["텀스 뉴메가 진공 스텐텀블러 3종",
+     "https://link.coupang.com/a/2JUDm"],
+    ["스타벅스 스트랩 텀블러 473ml",
      ""],
-    ["ACER 프레데터 68.58cm 4K 모니터",
-     "https://link.coupang.com/a/16VO0"],
-    ["필립스 108cm 4K 시력보호 모니터",
-     "https://link.coupang.com/a/16VX6"],
+    ["",
+     ""],
+    ["",
+     ""],
+    ["",
+     ""],
+    ["",
+     ""],
+    ["",
+     ""],
 ]
-# none: 4
-itemOrdering = [3, 2, 0, 1, 6,  5]
+# none: 1
+itemOrdering = [3, 0, 2, 4,  5, 6]
 
 driver = webdriver.Chrome()
 driver.get(proguide_url)
@@ -54,7 +54,7 @@ detail_0_ul_hey = ""
 for i in itemOrdering:
     detail_0_ul_hey += "<li><a href=\"" + itemList[i][1] + "\"><strong>" + itemList[i][0] + "</strong></a></li>\n"
 
-detail_1_raw = """
+detail_1_raw = f"""
     <div class="wp-block-group detail-1-item is-layout-constrained"
     onclick="window.open('DETAIL_1_URL')"
     >
@@ -63,7 +63,7 @@ detail_1_raw = """
             <p class="detail-1-item-name">DETAIL_1_ITEM_NAME</p>
             <div class="wp-block-group is-nowrap is-layout-flex wp-container-8">
                 <figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="492" height="492"
-                                                              src="https://rankguide.co.kr/wp-content/uploads/2023/06/DETAIL_1_IMG_NAME.webp"
+                                                              src="https://rankguide.co.kr/wp-content/uploads/2023/{month}/DETAIL_1_IMG_NAME.webp"
                                                               alt="DETAIL_1_ITEM_NAME"
                                                               class="wp-image-5143"
                                                               sizes="(max-width: 492px) 100vw, 492px"></figure>
@@ -105,7 +105,7 @@ for i in range(len(detail_2_subtitle)):
     else:
         detail_2_hey += "<p>HEY</p>\n"
 
-detail_3_raw = """
+detail_3_raw = f"""
    <div class="wp-block-group is-layout-constrained">
         <div class="wp-block-group__inner-container">
             <h3 class="wp-block-heading detail-3">
@@ -115,7 +115,7 @@ detail_3_raw = """
                     <h4 class="wp-block-heading">💡 DETAIL_3_ITEM_AWARD</h4>
                     <figure class="wp-block-image size-full"><a><img
                             decoding="async" loading="lazy" width="492" height="492"
-                            src="https://rankguide.co.kr/wp-content/uploads/2023/06/DETAIL_3_IMG_NAME.webp"
+                            src="https://rankguide.co.kr/wp-content/uploads/2023/{month}/DETAIL_3_IMG_NAME.webp"
                             alt="DETAIL_3_ITEM_TITLE" class="wp-image-5143"
                             sizes="(max-width: 492px) 100vw, 492px"></a></figure>
                     <p class="detail-3-cta-button"><a>최저가 보기</a></p>
@@ -165,7 +165,7 @@ for i in itemOrdering:
         .replace("DETAIL_3_CON", detail_3_cons[i]) \
         .replace("DETAIL_3_TABLE", detail_3_table[i])
 
-f = open("rank-guide-detail-raw.html", "r")
+f = open("output_html/rank-guide-detail-raw.html", "r")
 lines = f.readlines()
 replaced_lines = [x.replace("TITLE_HEY", title).replace("KEYWORD_HEY", keyword)
                       .replace("DETAIL_0_UL_HEY", detail_0_ul_hey)
